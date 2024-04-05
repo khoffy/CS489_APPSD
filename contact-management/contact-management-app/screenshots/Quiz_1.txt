@@ -1,0 +1,12 @@
+Task 1.1
+For the problem statement given above, perform Requirements discovery, identify the 
+functional requirements for the system, and present them in a list of short statements
+inside a .txt file.
+
+Requirements statement
+- The system should allow the user to create a contact
+- The system should allow the user to search a contact
+- The system should allow the user to add contact
+- The system should allow the user to update contact
+- The system should allow the user to delete contact
+- The system should allow the user to merge duplicate contact
