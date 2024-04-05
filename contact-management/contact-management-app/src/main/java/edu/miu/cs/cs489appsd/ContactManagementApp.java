@@ -45,7 +45,7 @@ public class ContactManagementApp
          StringBuilder jsonSb = new StringBuilder("[");
          jsonSb.append("\n");
          for (Contact c : contacts) {
-
+             jsonSb.append("   ");
              jsonSb.append("{");
              jsonSb.append("\"contactId\":"); jsonSb.append(c.getId()); jsonSb.append(", ");
              jsonSb.append("\"firstname\":");
@@ -87,8 +87,10 @@ public class ContactManagementApp
              }
              jsonSb.append("}");
              jsonSb.append("}");
+             jsonSb.append(",");
              jsonSb.append("\n");
          }
+         jsonSb.append("]");
 
         System.out.println(jsonSb);
     }
