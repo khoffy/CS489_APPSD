@@ -1,6 +1,7 @@
 package edu.miu.cs.cs489appsd.adsdentalsurgerieslab6.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.mapping.ToOne;
 
 import java.time.LocalDate;
 
@@ -15,7 +16,7 @@ public class Appointment {
     @ManyToOne
     private Dentist dentist;
 
-    @OneToOne
+    @ManyToOne
     private Surgery surgery;
 
     private LocalDate date;

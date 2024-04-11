@@ -1,17 +1,34 @@
 package edu.miu.cs.cs489appsd.adsdentalsurgerieslab6.entities;
 
-public abstract class User {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
+public abstract class AppUser {
+    @Id
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
 
-    public User() {}
-    public User(String firstName, String lastName, String email, String phoneNumber) {
+    public AppUser() {}
+
+    public AppUser(String id, String firstName, String lastName, String email, String phoneNumber) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -49,7 +66,8 @@ public abstract class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

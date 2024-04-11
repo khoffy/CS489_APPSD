@@ -3,24 +3,22 @@ package edu.miu.cs.cs489appsd.adsdentalsurgerieslab6.entities;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
-public class Dentist extends User {
+public class Dentist extends AppUser {
 
-    @Id
-    private String id;
 
     private String specialization;
 
-    @OneToMany
+    @OneToMany(mappedBy = "dentist", fetch = FetchType.EAGER)
     private List<Appointment> appointments;
 
     public Dentist() {}
 
     public Dentist(String id, String firstname, String lastname, String email, String phoneNumber, String specialization) {
-        super(firstname, lastname, email, phoneNumber);
-        this.id = id;
+        super(id, firstname, lastname, email, phoneNumber);
         this.specialization = specialization;
         this.appointments = new ArrayList<>();
     }
@@ -38,19 +36,18 @@ public class Dentist extends User {
     }
 
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getId() {
-        return id;
+        return super.getId();
     }
 
     @Override
     public String toString() {
         return "Dentist{" +
-                "id='" + id + '\'' +
-                super.toString() + '\'' +
-                ", specialization='" + specialization + '\'' +
+                super.toString() +
+                "specialization='" + specialization + '\'' +
                 ", appointments=" + appointments +
                 '}';
     }

@@ -3,10 +3,8 @@ package edu.miu.cs.cs489appsd.adsdentalsurgerieslab6.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class Patient extends User {
+public class Patient extends AppUser {
 
-    @Id
-    private String id;
 
     private String dateOfBirth;
 
@@ -16,24 +14,18 @@ public class Patient extends User {
     public Patient() {}
 
     public Patient(String id, String firstName, String lastName, String email, String phoneNumber, String dateOfBirth, Address address) {
-        super(firstName, lastName, email, phoneNumber);
-        this.id = id;
+        super(id, firstName, lastName, email, phoneNumber);
         this.dateOfBirth = dateOfBirth;
         this.address = address;
     }
 
-    public Patient(String firstName, String lastName, String email, String phoneNumber, String dateOfBirth, Address address) {
-        super(firstName, lastName, email, phoneNumber);
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-    }
 
     public String getId() {
-        return id;
+        return super.getId();
     }
 
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getDateOfBirth() {
@@ -53,10 +45,48 @@ public class Patient extends User {
     }
 
     @Override
+    public String getFirstName() {
+        return super.getFirstName();
+    }
+
+    @Override
+    public String getLastName() {
+        return super.getLastName();
+    }
+
+    @Override
+    public void setEmail(String email) {
+        super.setEmail(email);
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return super.getPhoneNumber();
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        super.setFirstName(firstName);
+    }
+
+    public void setLastName(String lastName) {
+        super.setLastName(lastName);
+    }
+
+    @Override
+    public String getEmail() {
+        return super.getEmail();
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        super.setPhoneNumber(phoneNumber);
+    }
+
+    @Override
     public String toString() {
         return "Patient{" +
-                "id=" + id +
-                ", " + super.toString() +
+                super.toString() +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", address=" + address +
                 '}';
