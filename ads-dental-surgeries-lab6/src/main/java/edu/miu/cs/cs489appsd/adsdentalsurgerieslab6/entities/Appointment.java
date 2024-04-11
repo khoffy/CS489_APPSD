@@ -10,7 +10,7 @@ public class Appointment {
     @Id
     private String id;
 
-    @OneToOne
+    @ManyToOne
     private Patient patient;
 
     @ManyToOne
@@ -82,9 +82,9 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "id='" + id + '\'' +
-                ", patient=" + patient +
-                ", dentist=" + dentist +
-                ", surgery=" + surgery +
+                ", patient_id=" + patient.getId() +
+                ", dentist_id=" + dentist.getId() +
+                ", surgery_id=" + surgery.getId() +
                 ", date=" + date +
                 '}';
     }

@@ -26,4 +26,14 @@ public class SurgeryServiceImpl implements SurgeryService {
     public List<Surgery> getAllSurgery() {
         return surgeryRepository.findAll();
     }
+
+    @Override
+    public Surgery updateSurgery(Surgery surgery) {
+        return surgeryRepository.saveAndFlush(surgery);
+    }
+
+    @Override
+    public void deleteSurgery(Surgery surgery) {
+        surgeryRepository.delete(surgery);
+    }
 }

@@ -21,6 +21,16 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient updatePatient(Patient patient) {
+        return patientRepository.saveAndFlush(patient);
+    }
+
+    @Override
+    public void deletePatient(Patient patient) {
+        patientRepository.delete(patient);
+    }
+
+    @Override
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
