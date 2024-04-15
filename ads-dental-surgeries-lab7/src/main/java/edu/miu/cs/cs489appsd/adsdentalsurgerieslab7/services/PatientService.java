@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface PatientService {
     PatientDto addPatient(PatientDto patientDto);
-    Patient updatePatient(Patient patient);
-    void deletePatient(Patient patient);
+    PatientDto updatePatient(String patientId, PatientDto patientdto);
+    void deletePatient(String patientId);
     List<PatientDto> getAllPatients();
     PatientDto getPatientById(String id);
 }
