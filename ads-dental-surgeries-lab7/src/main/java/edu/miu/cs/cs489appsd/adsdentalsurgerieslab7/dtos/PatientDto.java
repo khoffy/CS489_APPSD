@@ -1,6 +1,5 @@
 package edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos;
 
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.entities.Address;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
