@@ -4,13 +4,13 @@ import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos.AddressDto;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos.PatientDto;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.entities.Address;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.entities.Patient;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.exceptions.PatientNotFoundException;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.repositories.PatientRepository;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.services.PatientService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -44,23 +44,23 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientDto updatePatient(String patientId, PatientDto patientDto) {
         Patient patient = patientRepository.findById(patientId).orElse(null);
-        if (Objects.nonNull(patient)) {
-            Address address = Address.builder()
-                    .id(patientDto.addressDto().id())
-                    .street(patientDto.addressDto().street())
-                    .city(patientDto.addressDto().city())
-                    .state(patientDto.addressDto().state())
-                    .zip(patientDto.addressDto().zip())
-                    .build();
-            patient.setId(patientId);
-            patient.setFirstName(patientDto.firstName());
-            patient.setLastName(patientDto.lastName());
-            patient.setEmail(patientDto.email());
-            patient.setPhoneNumber(patientDto.phoneNumber());
-            patient.setDateOfBirth(patientDto.dateOfBirth());
-            patient.setAddress(address);
+        if(Objects.isNull(patient)) {
+            throw new PatientNotFoundException("Id not found");
         }
-        assert patient != null;
+        Address address = Address.builder()
+                .id(patientDto.addressDto().id())
+                .street(patientDto.addressDto().street())
+                .city(patientDto.addressDto().city())
+                .state(patientDto.addressDto().state())
+                .zip(patientDto.addressDto().zip())
+                .build();
+        patient.setId(patientId);
+        patient.setFirstName(patientDto.firstName());
+        patient.setLastName(patientDto.lastName());
+        patient.setEmail(patientDto.email());
+        patient.setPhoneNumber(patientDto.phoneNumber());
+        patient.setDateOfBirth(patientDto.dateOfBirth());
+        patient.setAddress(address);
         Patient updatedPatient = patientRepository.saveAndFlush(patient);
 
         AddressDto addressDto = new AddressDto(updatedPatient.getAddress().getId(),
@@ -89,6 +89,12 @@ public class PatientServiceImpl implements PatientService {
                     return new PatientDto(patient.getId(), patient.getFirstName(), patient.getLastName(), patient.getEmail(),
                             patient.getPhoneNumber(), patient.getDateOfBirth(), addressDto);
                 }).toList();
+    }
+
+    @Override
+    public List<PatientDto> searchPatient(String search) {
+
+        return List.of();
     }
 
     @Override
