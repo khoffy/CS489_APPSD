@@ -1,13 +1,15 @@
-package edu.miu.cs.cs489appsd.adsdentalsurgerieslab7;
+package edu.miu.cs.cs489appsd.adsdentalsurgerieslab9;
 
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos.AddressDto;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos.AppointmentDto;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.dtos.PatientDto;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.entities.*;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.services.AppointmentService;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.services.DentistService;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.services.PatientService;
-import edu.miu.cs.cs489appsd.adsdentalsurgerieslab7.services.SurgeryService;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.AddressDto;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.AppointmentDto;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.PatientDto;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.entities.Address;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.entities.Dentist;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.entities.Surgery;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.AppointmentService;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.DentistService;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.PatientService;
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.SurgeryService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,11 +19,13 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class AdsDentalSurgeriesLab7Application {
+public class AdsDentalSurgeriesLab9Application {
+
 
     public static void main(String[] args) {
-        SpringApplication.run(AdsDentalSurgeriesLab7Application.class, args);
+        SpringApplication.run(AdsDentalSurgeriesLab9Application.class, args);
     }
+
 
     @Bean
     CommandLineRunner commandLineRunner(PatientService patientService, DentistService dentistService,
@@ -108,4 +112,5 @@ public class AdsDentalSurgeriesLab7Application {
 //            System.out.println();
         };
     }
+
 }
