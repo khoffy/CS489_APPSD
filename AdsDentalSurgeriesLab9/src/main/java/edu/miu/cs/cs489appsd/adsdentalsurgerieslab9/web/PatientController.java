@@ -5,6 +5,7 @@ import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ public class PatientController {
 
     //private final String urlString = "";
 
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @GetMapping(value = "/list")
     public ResponseEntity<List<PatientDto>> getPatients() {
         return new ResponseEntity<>(patientService.getAllPatients(), HttpStatus.OK);

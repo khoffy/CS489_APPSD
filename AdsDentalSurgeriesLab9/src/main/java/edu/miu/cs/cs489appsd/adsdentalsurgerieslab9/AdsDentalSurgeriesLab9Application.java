@@ -1,5 +1,6 @@
 package edu.miu.cs.cs489appsd.adsdentalsurgerieslab9;
 
+import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.config.RsaKeysConfig;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.AddressDto;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.AppointmentDto;
 import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.dtos.PatientDto;
@@ -13,11 +14,13 @@ import edu.miu.cs.cs489appsd.adsdentalsurgerieslab9.services.SurgeryService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 
+@EnableConfigurationProperties(RsaKeysConfig.class)
 @SpringBootApplication
 public class AdsDentalSurgeriesLab9Application {
 
