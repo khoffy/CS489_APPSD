@@ -45,8 +45,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
-                User.withUsername("user1").password(passwordEncoder.encode( "1234")).authorities("USER").build(),
-                User.withUsername("user2").password(passwordEncoder.encode("1234")).authorities("USER").build(),
+                User.withUsername("patient").password(passwordEncoder.encode( "1234")).authorities("USER").build(),
+                User.withUsername("dentist").password(passwordEncoder.encode("1234")).authorities("USER", "DENTIST").build(),
                 User.withUsername("admin").password(passwordEncoder.encode("1234")).authorities("USER", "ADMIN").build()
         );
     }
@@ -63,6 +63,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/swagger-ui/**").permitAll())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/token"))
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

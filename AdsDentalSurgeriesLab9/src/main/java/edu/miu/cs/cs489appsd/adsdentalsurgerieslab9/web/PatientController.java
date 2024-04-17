@@ -25,21 +25,25 @@ public class PatientController {
         return new ResponseEntity<>(patientService.getAllPatients(), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN', 'SCOPE_DENTIST')")
     @GetMapping(value = "/get/{patientId}")
     public ResponseEntity<PatientDto> getPatientById(@PathVariable("patientId") String patientId) {
         return new ResponseEntity<>(patientService.getPatientById(patientId), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping(value = "/register")
     public ResponseEntity<PatientDto> registerPatient(@Valid @RequestBody PatientDto patientDto) {
         return new ResponseEntity<>(patientService.addPatient(patientDto), HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAnyAuthority({'SCOPE_USER', 'SCOPE_ADMIN'})")
     @PutMapping(value = "/update/{patientId}")
     public ResponseEntity<PatientDto> updatePatient(@PathVariable("patientId") String patientId, @RequestBody PatientDto patientDto) {
         return new ResponseEntity<>(patientService.updatePatient(patientId, patientDto), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @DeleteMapping("/delete/{patientId}")
     public ResponseEntity<String> deletePatient(@PathVariable("patientId") String patientId) {
         patientService.deletePatient(patientId);
