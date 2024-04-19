@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: ads-dental-surgeries-lab7
+    description: ADS Dental Surgeries App
+#    #basedir: ${user.home}/.${spring.application.name}
+#  profiles:
+#    active: local
+#  datasource:
+#    database: surgeries_db
+#    hostname: localhost
+#    port: 5432
+#    username:
+#    password:
+#    url: jdbc:postgresql://${spring.datasource.hostname}:${spring.datasource.port}/${spring.datasource.database}
+#    driver-class-name: org.postgresql.Driver
+#    hikari:
+#      connection-test-query: "SELECT 1"
+#      max-lifetime: 1800000
+#      idle-timeout: 600000
+#      leak-detection-threshold: 60000
+#  initialization-mode: always
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    database: postgresql
+#    properties:
+#      hibernate:
+#        enable_lazy_load_no_trans: true
+
+
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  h2:
+#    console:
+#      enabled: true
+#
+#server:
+#  port: 8080
+
+springdoc:
+  api-docs:
+    path: /api-docs

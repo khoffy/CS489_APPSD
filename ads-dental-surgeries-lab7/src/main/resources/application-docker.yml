@@ -1,0 +1,34 @@
+
+spring:
+  application:
+    name: ads-dental-surgeries-lab7
+#    description: ADS Dental Surgeries App
+    #basedir: ${user.home}/.${spring.application.name}
+#  profiles:
+#    active: docker
+
+  datasource:
+    database: ads_dental_surgeries_db
+    hostname: host.docker.internal #localhost
+    port: 5432
+    username: koffi
+    password: 1234
+    url: jdbc:postgresql://${spring.datasource.hostname}:${spring.datasource.port}/${spring.datasource.database}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: "SELECT 1"
+      max-lifetime: 1800000
+      idle-timeout: 600000
+      leak-detection-threshold: 60000
+  initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+
