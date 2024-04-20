@@ -1,13 +1,15 @@
-version: '3.7'
 services:
   postgres:
     image: 'postgres:latest'
+    restart: always
     environment:
       - 'POSTGRES_DB=ads_dental_surgeries_db'
       - 'POSTGRES_PASSWORD=1234'
       - 'POSTGRES_USER=koffi'
     ports:
       - '5432:5432'
+#    networks:
+#      - dentalSurgeries-net
 
   pgadmin:
     image: 'dpage/pgadmin4:latest'
@@ -20,5 +22,18 @@ services:
 
 #  app:
 #    image: 'ads-dental-surgeries'
+#    build:
+#      context: .
+#    container_name: app
 #    ports:
-#      - '80:8080'
+#      - '8080:8080'
+##    networks:
+##      - dentalSurgeries-net
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ads_dental_surgeries_db
+#      - SPRING_DATASOURCE_USERNAME=koffi
+#      - SPRING_DATASOURCE_PASSWORD=1234
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+#  networks:
+#    dentalSurgeries-net

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../cs489-appsd" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../cs489-apsd-gitdemo1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../pensionMgmtApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../product-management-app" vcs="Git" />
+  </component>
+</project>
